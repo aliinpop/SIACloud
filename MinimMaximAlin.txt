@@ -1,0 +1,18 @@
+-module(helloworld).
+-export([maxim/1]).
+-export([minim/1]).
+-export([start/0]).
+
+start()-> List = [2, 40, 120, 35, 13, 100], maxim(List), minim(List).
+
+maxim([H|T]) -> maxim(H, T).
+maxim(Maxim, [H|T]) -> if Maxim >= H -> maxim(Maxim, T);
+                          Maxim < H -> maxim(H, T)
+                       end;
+maxim(Maxim, []) -> io:fwrite("Maxim is ~p~n", [Maxim]).
+
+minim([H|T]) -> minim(H, T).
+minim(Minim, [H|T]) -> if Minim =< H -> minim(Minim, T);
+                          Minim > H -> minim(H, T)
+                       end;
+minim(Minim, []) -> io:fwrite("Minim is ~p~n", [Minim]).
